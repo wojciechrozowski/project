@@ -1,5 +1,5 @@
 #include "kernel.h"
-uint16_t *video_memory = (uint16_t *) 0xB8000;
+uint16_t *video_memory = (uint16_t *) 0xC00B8000;
 uint8_t screen_x = 0;
 uint8_t screen_y = 0;
 uint8_t back;

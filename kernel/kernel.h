@@ -47,5 +47,15 @@ void * memcpy (void * dst, const void * src, size_t n);
 int vsprintf(char *buf, const char *fmt, va_list args);
 //printk.c
 int printk(const char *fmt, ...);
+//paging.c
+
+typedef uint32_t pte_t;
+typedef uint32_t pde_t;
+
+pte_t entry_page_table[1024];
+pde_t entry_page_directory[1024];
+
+void *pdir;
+
 
 #endif

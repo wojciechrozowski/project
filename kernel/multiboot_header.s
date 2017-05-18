@@ -17,10 +17,20 @@ resb 16384
 stack_top:
 
 section .text
+
 global _start
 _start:
 	mov esp, stack_top
 	extern kernel_main
+	extern pdir
+	mov ecx, [pdir]
+	mov cr3, ecx
+
+
+	mov ecx, cr0
+	or ecx, 0x80000000
+	mov cr0, ecx
+
 	call kernel_main
 
 	cli
