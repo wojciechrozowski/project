@@ -1,6 +1,10 @@
-#include <stdint.h>
-#include <stdarg.h>
-#include "string.h"
+/* vsprintf.c -- Lars Wirzenius & Linus Torvalds. */
+/*
+ * Wirzenius wrote this portably, Torvalds fucked it up :-)
+ */
+
+
+#include "kernel.h"
 #define is_digit(c)	((c) >= '0' && (c) <= '9')
 
 static int skip_atoi(const char **s)

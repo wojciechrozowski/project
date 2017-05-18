@@ -1,9 +1,4 @@
-#include <stdarg.h>
-#include <stddef.h>
-#include <stdint.h>
-#include "vsprintf.h"
-#include "screen.h"
-
+#include "kernel.h"
 static char buf[1024];
 
 int printk(const char *fmt, ...)

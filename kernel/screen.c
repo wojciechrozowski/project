@@ -1,7 +1,4 @@
-#include <stdint.h>
-#include <stdbool.h>
-#include "screen.h"
-#include "x86.h"
+#include "kernel.h"
 uint16_t *video_memory = (uint16_t *) 0xB8000;
 uint8_t screen_x = 0;
 uint8_t screen_y = 0;
@@ -50,10 +47,22 @@ void screen_put(char sign)
 		screen_y++;
 		screen_x=0;
 	}
+	if (sign == '\r')
+	{
+		screen_x = 0;
+	}
+	if (sign == 0x09)
+	{
+		screen_x = (screen_x + 8) & ~(8-1);
+	}
 	if(screen_x >= 80)
 	{
 		screen_x=0;
 		screen_y++;
+	}
+	if(screen_x&& sign == 0x08)
+	{
+		screen_x--;
 	}
 
 	if(screen_y>=25)
@@ -100,50 +109,3 @@ void screen_write(char *string)
 	}
 }
 
-void write_number(uint32_t n)
-{
-	switch(n)
-	{
-	case 0:
-		screen_put('0');
-		break;
-	case 1:
-		screen_put('1');
-		break;
-	case 2:
-		screen_put('2');
-		break;
-	case 3:
-		screen_put('3');
-		break;
-	case 4:
-		screen_put('4');
-		break;
-	case 5:
-		screen_put('5');
-		break;
-	case 6:
-		screen_put('6');
-		break;
-	case 7:
-		screen_put('7');
-		break;
-	case 8:
-		screen_put('8');
-		break;
-	case 9:
-		screen_put('9');
-		break;
-	default:
-		screen_write("nan");
-	}
-}
-
-void write_dec(uint32_t n)
-{
-	if(n==0)
-		return;
-	write_dec(n/10);
-	write_number(n%10);
-
-}
