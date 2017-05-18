@@ -1,9 +1,9 @@
-AS	:=	i686-elf-as
+AS	:=	nasm
 CC  :=	i686-elf-gcc
 LD	:=	i686-elf-ld
 EMU	:=	qemu-system-i386
 
-ASFLAGS	:= 
+ASFLAGS	:= -felf32
 CFLAGS	:= -std=gnu99 -ffreestanding -O2 -Wall -Wextra
 LDFLAGS :=-ffreestanding -O2 -nostdlib -lgcc
 
@@ -14,7 +14,7 @@ OBJECTS  := $(OBJECTS)
 
 all: $(OBJECTS) link test
 
-.s.o:
+.asm.o:
 	@$(AS) $(ASFLAGS) -o $*.o $<
 .c.o:
 	$(CC) $(CFLAGS) -c -o $*.o $<
