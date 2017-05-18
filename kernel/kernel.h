@@ -41,6 +41,8 @@ void write_number(uint32_t n);
 void write_dec(uint32_t n);
 //string.c
 int strlen (char *str);
+void *memset(void *dst, int c, size_t n);
+void * memcpy (void * dst, const void * src, size_t n);
 //vsprintf.c
 int vsprintf(char *buf, const char *fmt, va_list args);
 //printk.c
