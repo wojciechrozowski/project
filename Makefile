@@ -4,10 +4,10 @@ LD	:=	i686-elf-ld
 EMU	:=	qemu-system-i386
 
 ASFLAGS	:= -felf32
-CFLAGS	:= -std=gnu99 -ffreestanding -O2 -Wall -Wextra
+CFLAGS	:= -std=gnu99 -ffreestanding -O2 -Wall -Wextra 
 LDFLAGS :=-ffreestanding -O2 -nostdlib -lgcc
 
-SRCFILES := $(shell find kernel -type f -name "*.c" -o -name "*.s")
+SRCFILES := $(shell find kernel lib -type f -name "*.c" -o -name "*.s")
 OBJECTS  :=$(SRCFILES:.c=.o)
 OBJECTS  :=$(OBJECTS:.s=.o) 
 OBJECTS  := $(OBJECTS)

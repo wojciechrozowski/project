@@ -25,5 +25,7 @@ void set_background(uint8_t colour);
 void set_foreground(uint8_t colour);
 void screen_put(char sign);
 void screen_write(char *string);
+void write_number(uint32_t n);
+void write_dec(uint32_t n);
 
 #endif
