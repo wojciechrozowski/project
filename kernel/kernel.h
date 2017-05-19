@@ -52,6 +52,8 @@ int printk(const char *fmt, ...);
 typedef uint32_t pte_t;
 typedef uint32_t pde_t;
 
+#define kernel_virtual_base 0xC0000000
+
 pte_t entry_page_table[1024];
 pde_t entry_page_directory[1024];
 

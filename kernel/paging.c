@@ -1030,8 +1030,8 @@ pte_t entry_page_table[1024] = {
 
 __attribute__((__aligned__(4096)))
 pde_t entry_page_directory[1024] = {
-		[0] = ((void * ) entry_page_table) + 3,
-		[768] = ((void * ) entry_page_table) + 3
+		[0] = ((void * ) entry_page_table) - 0xC0000000 + 1 ,
+		[768] = ((void * ) entry_page_table) - 0xC0000000 + 3,
 };
 
 void *pdir = &entry_page_directory;
