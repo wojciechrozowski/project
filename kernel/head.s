@@ -26,14 +26,22 @@ _start = entry - 0xC0000000
 .global entry
 
 entry:
-	movw $0x1234,0x472
 	movl $(entry_page_directory), %eax
 	subl $0xC0000000, %eax
 	movl %eax, %cr3
 	movl %cr0, %ecx
-	orl $0x80000001, %ecx
-	movl %ecx, %cr0
+	orl $0x80000001, %eax
+	movl %eax, %cr0
 	mov $stack_top, %esp
+
+
+	movl $(entry_page_directory), %eax
+	movl (%eax), %ecx
+	movl $0, %ecx
+	mov %ecx, (%eax)
+	p1:
+	invlpg (0)
+
 	call kernel_main
 
 	cli
