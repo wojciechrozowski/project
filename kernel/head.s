@@ -34,12 +34,8 @@ entry:
 	movl %eax, %cr0
 	mov $stack_top, %esp
 
-
 	movl $(entry_page_directory), %eax
-	movl (%eax), %ecx
-	movl $0, %ecx
-	mov %ecx, (%eax)
-	p1:
+	movl $0, (%eax)
 	invlpg (0)
 
 	call kernel_main

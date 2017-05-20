@@ -51,9 +51,7 @@ void kernel_main(void)
 //	printk("common_end: 0x%x\n", common_end);
 //	printk("bss_start: 0x%x\n", bss_start);
 //	printk("bss_end: 0x%x\n", bss_end);
-	//uint32_t *ptr = 0xB8000;
-	uint32_t *ptr2 = 0xC00B8000;
-	printk("hello\n");
-	//printk("0x%x equals to 0x%x\n", *ptr, *ptr2);
+	printk("loaded.\n");
+	init_gdt();
 
 }

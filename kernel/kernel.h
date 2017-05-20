@@ -59,5 +59,37 @@ pde_t entry_page_directory[1024];
 
 void *pdir;
 
+//gdt.c
+
+#define GDT_SIZE 5
+
+struct gdt_entry
+{
+	uint16_t	limit_low;
+	uint16_t	base_low;
+	uint8_t		base_middle;
+	uint8_t		access;
+	uint8_t		granularity;
+	uint8_t		base_high;
+}__attribute__((packed));
+typedef struct gdt_entry gdt_entry_t;
+
+gdt_entry_t gdt_entries[GDT_SIZE];
+
+struct gdt_pointer
+{
+	uint16_t limit;
+	uint32_t base;
+}__attribute__((packed));
+typedef struct gdt_pointer gdt_ptr_t;
+
+gdt_ptr_t gdt_ptr;
+
+void init_gdt();
+void set_gdt_gate(int32_t number, uint32_t base, uint32_t limit, uint8_t access, uint8_t granularity);
+extern void load_gdt();
+
+//load_gdt.s
+extern void load_gdt(uint32_t addr);
 
 #endif
