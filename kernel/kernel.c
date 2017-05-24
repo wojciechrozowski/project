@@ -51,7 +51,10 @@ void kernel_main(void)
 //	printk("common_end: 0x%x\n", common_end);
 //	printk("bss_start: 0x%x\n", bss_start);
 //	printk("bss_end: 0x%x\n", bss_end);
-	printk("loaded.\n");
+	printk("loaded. \n");
 	init_gdt();
+	init_idt();
+	printk("hello\n");
+	asm("int $0x0");
 
 }

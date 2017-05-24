@@ -27,4 +27,4 @@ void set_gdt_gate(int32_t number, uint32_t base, uint32_t limit, uint8_t access,
 	gdt_entries[number].access = access;
 
 }
-gdt_ptr_t gdt_ptr;
+
