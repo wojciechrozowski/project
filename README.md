@@ -1,3 +1,4 @@
 # project
 
 eclipse test
+check
